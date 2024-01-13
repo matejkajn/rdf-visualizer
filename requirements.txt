@@ -1,4 +1,3 @@
 streamlit_agraph
-rdflib
 streamlit
-os
+rdflib
