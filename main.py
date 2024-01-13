@@ -78,13 +78,13 @@ def app():
 
         submitted = st.form_submit_button('Render graph', type='primary')
 
-        if 'uploaded_file' not in st.session_state:
-            if submitted and uploaded_file is not None:
+        if submitted and uploaded_file is not None:
+            if 'uploaded_file' not in st.session_state or st.session_state['uploaded_file'] != uploaded_file:
                 save_file(uploaded_file)
                 st.success(
-                    'Your file has been succesfully uploaded!', icon='🥳')
-            elif submitted and uploaded_file is None:
-                st.error('An error occured while uploading your file.', icon="🚨")
+                    'Your file has been successfully uploaded!', icon='🥳')
+            else:
+                st.error('An error occurred while uploading your file.', icon="🚨")
 
     st.header('Graph')
 
